@@ -11,5 +11,7 @@ namespace EFCrudCore.Services
 
         public List<Estudiantes> GetStudents();
 
+        public Estudiantes LoadInformation(Estudiantes es);
+
     }
 }

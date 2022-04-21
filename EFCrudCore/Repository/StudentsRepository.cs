@@ -55,7 +55,9 @@ namespace EFCrudCore.Repository
 
         public void UpdateStudents(Estudiantes es)
         {
-           // throw new NotImplementedException();
+            app.Estudiantes.Update(es);
+            app.SaveChanges();
+            // throw new NotImplementedException();
         }
 
 

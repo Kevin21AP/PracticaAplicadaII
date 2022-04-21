@@ -21,6 +21,24 @@ namespace EFCrudCore.Controllers
             return View(list);
         }
 
+        public IActionResult actu(Estudiantes es)
+        {
+
+            Student.UpdateStudents(es);
+            return RedirectToAction("Index");
+
+        }
+        public IActionResult Guardar()
+        {
+
+            return View();
+        }
+
+        public IActionResult Save(Estudiantes es)
+        {
+            Student.AddStudents(es);
+            return RedirectToAction("Index");
+        }
         public IActionResult Delete(int id)
         {
             Estudiantes es = new Estudiantes();
@@ -28,13 +46,22 @@ namespace EFCrudCore.Controllers
             Student.DeleteStudents(es);
             return RedirectToAction("Index");
         }
-        public IActionResult AddStudents(Estudiantes estudiante )
+
+        public IActionResult Load(int id)
         {
-            Student.AddStudents(estudiante);
-            ViewBag.Student = Student.GetStudents();
-            return View("Index");
+            Estudiantes es = new Estudiantes();
+            es.Id=id;
+            var listarEstudiante=Student.LoadInformation(es);
+            return View(listarEstudiante);
+        }
+        [HttpPost]
+        public IActionResult Insertardata(Estudiantes es)
+        {
+
+            return RedirectToAction("Index");
+            // return View("Index");
+
         }
 
-       
     }
 }
