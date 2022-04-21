@@ -14,12 +14,20 @@ namespace EFCrudCore.Controllers
             Student = estudiantes;
         }
 
+        //mostrar datos en el view
         public IActionResult Index()
         {
-            ViewBag.Student = Student.GetStudents();
-            return View();
+            var list = Student.GetStudents();
+            return View(list);
         }
 
+        public IActionResult Delete(int id)
+        {
+            Estudiantes es = new Estudiantes();
+            es.Id = id;
+            Student.DeleteStudents(es);
+            return RedirectToAction("Index");
+        }
         public IActionResult AddStudents(Estudiantes estudiante )
         {
             Student.AddStudents(estudiante);

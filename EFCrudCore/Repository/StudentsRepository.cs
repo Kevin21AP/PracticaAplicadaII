@@ -29,6 +29,8 @@ namespace EFCrudCore.Repository
 
         public void DeleteStudents(Estudiantes es)
         {
+            app.Estudiantes.Remove(es);
+            app.SaveChanges();
             //throw new NotImplementedException();
         }
 
@@ -43,9 +45,19 @@ namespace EFCrudCore.Repository
             //throw new NotImplementedException();
         }
 
+        public Estudiantes LoadInformation(Estudiantes es)
+        {
+            //crear consulta en la db mediante linq con expresion landam para extraer un solo registro
+            // expresion landan toma dentro de la clase estudiante 
+            var listarEstudiante = app.Estudiantes.Where(x => x.Id==es.Id).FirstOrDefault();
+            return listarEstudiante;
+        }
+
         public void UpdateStudents(Estudiantes es)
         {
            // throw new NotImplementedException();
         }
+
+
     }
 }

@@ -8,10 +8,10 @@
 
 <table class="table table-striped" id="tablaEst">
     <thead>
-        <tr>
+        <tr> 
             <th>Name</th>
             <th>Last Name</th>
-             <th>Acciones</th>
+            <th>Acciones</th>
             
         </tr>
 
@@ -20,6 +20,7 @@
         @foreach (var iterar in Model)
         {
             <tr>
+
                 <td>@iterar.Name  </td>
                 <td>@iterar.LastName  </td>
                 @*El primer delete es para texto el segundo delte es la accion del controlador*@
