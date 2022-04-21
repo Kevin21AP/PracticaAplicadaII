@@ -1,0 +1,49 @@
+﻿@model List<EFCrudCore.Models.Estudiantes>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+    @Html.ActionLink("Save","Guardar",new{@class="btn btn-danger"})
+
+<table class="table table-striped" id="tablaEst">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Last Name</th>
+             <th>Acciones</th>
+            
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var iterar in Model)
+        {
+            <tr>
+                <td>@iterar.Name  </td>
+                <td>@iterar.LastName  </td>
+                @*El primer delete es para texto el segundo delte es la accion del controlador*@
+                <td>@Html.ActionLink("Delete","Delete",new{id=@iterar.Id},new{@class="btn btn-danger"}) 
+                @Html.ActionLink("Update","Load",new{id=@iterar.Id},new{@class="btn btn-warning"} ) </td>
+            </tr>
+        }
+
+    </tbody>
+
+
+</table>
+@section scripts{
+
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+        var tabla = $('#tablaEst').DataTable();
+        }   
+        );
+
+    </script>
+
+}
+
+
